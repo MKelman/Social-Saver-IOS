@@ -52,12 +52,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TESTING" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IP-i0-5YE">
-                                <rect key="frame" x="117" y="219" width="71" height="21"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="76x-hb-jI5">
+                                <rect key="frame" x="16" y="90" width="288" height="29"/>
+                                <segments>
+                                    <segment title="Wanted Deal"/>
+                                    <segment title="Found Deal"/>
+                                </segments>
+                                <connections>
+                                    <action selector="DealTypeAction:" destination="lCe-CH-Byu" eventType="valueChanged" id="9sr-4W-4k4"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vup-ha-Z1y">
+                                <rect key="frame" x="75" y="300" width="229" height="29"/>
+                                <segments>
+                                    <segment title="Online"/>
+                                    <segment title="In-Store"/>
+                                </segments>
+                            </segmentedControl>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j64-hn-j0I">
+                                <rect key="frame" x="16" y="154" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXa-R3-YuE">
+                                <rect key="frame" x="33" y="200" width="271" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="02/25/2015" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZUr-Ow-YpM">
+                                <rect key="frame" x="132" y="248" width="172" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QjZ-k9-ucj">
+                                <rect key="frame" x="16" y="496" width="288" height="52"/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.48627450979999998" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitButton:" destination="lCe-CH-Byu" eventType="touchUpInside" id="qN2-mH-AAD"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2d2-yu-fLx">
+                                <rect key="frame" x="16" y="200" width="15" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sale End Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq1-4s-507">
+                                <rect key="frame" x="16" y="252" width="119" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Found:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2S-Ea-1Zc">
+                                <rect key="frame" x="16" y="307" width="58" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pK6-zP-dXG">
+                                <rect key="frame" x="16" y="346" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -69,6 +134,14 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="dealType" destination="76x-hb-jI5" id="FCx-HV-IiG"/>
+                        <outlet property="found" destination="vup-ha-Z1y" id="LDI-sn-mEd"/>
+                        <outlet property="foundLabel" destination="w2S-Ea-1Zc" id="Yje-ba-djb"/>
+                        <outlet property="foundLocation" destination="pK6-zP-dXG" id="xe4-4f-eeS"/>
+                        <outlet property="itemName" destination="j64-hn-j0I" id="awl-fl-Ayu"/>
+                        <outlet property="maxPrice" destination="fXa-R3-YuE" id="XpA-jz-BPt"/>
+                        <outlet property="saleEnd" destination="ZUr-Ow-YpM" id="Wwf-4B-ZBf"/>
+                        <outlet property="saleEndLabel" destination="Dq1-4s-507" id="2C1-ox-3BP"/>
                         <outlet property="sideButton" destination="yci-mL-e78" id="q38-YO-JNC"/>
                     </connections>
                 </viewController>
