@@ -322,10 +322,10 @@
             </objects>
             <point key="canvasLocation" x="-861" y="974"/>
         </scene>
-        <!--View Controller-->
+        <!--User Info-->
         <scene sceneID="dUb-Xy-1oT">
             <objects>
-                <viewController id="7gV-It-kFP" sceneMemberID="viewController">
+                <viewController id="7gV-It-kFP" customClass="UserInfo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ohs-2J-ZBe"/>
                         <viewControllerLayoutGuide type="bottom" id="3gI-S4-EIS"/>
@@ -372,6 +372,9 @@
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="SubmitButton:" destination="7gV-It-kFP" eventType="touchUpInside" id="NTa-3e-CcX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UnP-pD-JSr">
                                 <rect key="frame" x="16" y="496" width="140" height="52"/>
@@ -423,6 +426,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="UM1-Lz-bPN"/>
                     <connections>
+                        <outlet property="confirmPassInfo" destination="1zm-Hv-hij" id="iTW-e1-Me5"/>
+                        <outlet property="emailInfo" destination="rbO-sN-xh5" id="oc5-Fz-sTp"/>
+                        <outlet property="nameInfo" destination="NVE-gQ-ecE" id="6RT-Gu-USY"/>
+                        <outlet property="passInfo" destination="EOb-ph-BIo" id="gik-ad-f5Q"/>
                         <segue destination="XGO-ck-Z4i" kind="modal" identifier="toMain2" id="vkN-Lv-Z4S"/>
                     </connections>
                 </viewController>
@@ -545,7 +552,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="IDZ-L0-Wyj"/>
+        <segue reference="vkN-Lv-Z4S"/>
         <segue reference="Oe7-6C-v0E"/>
         <segue reference="uti-na-icN"/>
     </inferredMetricsTieBreakers>
