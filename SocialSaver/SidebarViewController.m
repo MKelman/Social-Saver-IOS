@@ -1,9 +1,8 @@
 //
 //  SidebarViewController.m
-//  Wokoy
+//  Social Saver
 //
-//  Created by Mitchell Kelman on 07/13/14.
-//  Copyright (c) 2014 Wokoy. All rights reserved.
+//  Copyright (c) 2015 Social Saver. All rights reserved.
 //
 
 #import "SidebarViewController.h"

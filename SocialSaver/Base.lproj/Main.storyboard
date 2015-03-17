@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
-        <!--Tutor Others-->
+        <!--Deals-->
         <scene sceneID="s3A-ZU-Jtl">
             <objects>
-                <viewController id="D9A-eW-uh2" customClass="TutorOthers" sceneMemberID="viewController">
+                <viewController id="D9A-eW-uh2" customClass="Deals" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RJk-bv-G5X"/>
                         <viewControllerLayoutGuide type="bottom" id="xl4-Zu-dac"/>
@@ -29,22 +29,15 @@
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="Se2-Bp-mR4">
                             <inset key="imageInsets" minX="-10" minY="-4" maxX="0.0" maxY="0.0"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="6eX-eS-iDJ">
-                            <inset key="imageInsets" minX="0.0" minY="-4" maxX="0.0" maxY="0.0"/>
-                        </barButtonItem>
-                        <connections>
-                            <outlet property="rightBarButtonItem" destination="6eX-eS-iDJ" id="taf-Oz-KAJ"/>
-                        </connections>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="optionsButton" destination="6eX-eS-iDJ" id="9rd-Bs-XIE"/>
-                        <outlet property="sidebarButton" destination="Se2-Bp-mR4" id="Xjf-tx-zVL"/>
+                        <outlet property="menuButton" destination="Se2-Bp-mR4" id="Sid-vc-GKN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0sB-uO-NCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1116" y="1856"/>
+            <point key="canvasLocation" x="1116" y="1837"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="Zn7-wZ-jdi">
@@ -177,7 +170,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <connections>
-                                    <segue destination="D9A-eW-uh2" kind="custom" identifier="tomap" customClass="SWRevealViewControllerSegue" id="8Pc-tf-Wp1"/>
+                                    <segue destination="D9A-eW-uh2" kind="custom" identifier="toDeals" customClass="SWRevealViewControllerSegue" id="8Pc-tf-Wp1"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="logout" id="2eG-8s-WE9">
@@ -196,6 +189,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <connections>
+                                    <segue destination="ZaI-aM-eiM" kind="custom" identifier="toLogout" id="MRJ-MG-BCN"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -434,10 +430,10 @@
             </objects>
             <point key="canvasLocation" x="-238" y="185"/>
         </scene>
-        <!--FindA Tutor-->
+        <!--Friends-->
         <scene sceneID="EAb-nM-3wY">
             <objects>
-                <viewController id="mdm-Af-1zU" customClass="FindATutor" sceneMemberID="viewController">
+                <viewController id="mdm-Af-1zU" customClass="Friends" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="32W-93-FGN"/>
                         <viewControllerLayoutGuide type="bottom" id="yqs-oh-RKW"/>
@@ -458,17 +454,10 @@
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="BId-vJ-DhU">
                             <inset key="imageInsets" minX="-10" minY="-4" maxX="0.0" maxY="0.0"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="mz0-R3-7UW">
-                            <inset key="imageInsets" minX="0.0" minY="-4" maxX="0.0" maxY="0.0"/>
-                        </barButtonItem>
-                        <connections>
-                            <outlet property="rightBarButtonItem" destination="mz0-R3-7UW" id="YNe-vV-57e"/>
-                        </connections>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="optionsButton" destination="mz0-R3-7UW" id="a78-d2-jtH"/>
-                        <outlet property="sidebarButton" destination="BId-vJ-DhU" id="LwU-5v-6J5"/>
+                        <outlet property="menuButton" destination="BId-vJ-DhU" id="l2F-Ys-mMJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xLD-EO-B0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -518,6 +507,34 @@
             </objects>
             <point key="canvasLocation" x="259" y="1418"/>
         </scene>
+        <!--Logout-->
+        <scene sceneID="SL2-Ca-X2p">
+            <objects>
+                <viewController id="ZaI-aM-eiM" customClass="Logout" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZTH-Vf-bsi"/>
+                        <viewControllerLayoutGuide type="bottom" id="I6r-cA-FEG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LBs-dC-AgJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="EUU-0B-dun">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="7WM-FL-B9b">
+                            <inset key="imageInsets" minX="-10" minY="-4" maxX="0.0" maxY="0.0"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="menuButton" destination="7WM-FL-B9b" id="4TV-7d-cep"/>
+                        <segue destination="MAY-jy-ieb" kind="modal" identifier="toLogOut" id="CrB-cJ-8XH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pK1-pR-XGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-487" y="1676"/>
+        </scene>
     </scenes>
     <resources>
         <image name="officialSSlogo.png" width="2490" height="750"/>
@@ -530,6 +547,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="IDZ-L0-Wyj"/>
         <segue reference="Oe7-6C-v0E"/>
-        <segue reference="OMO-fk-2Qg"/>
+        <segue reference="uti-na-icN"/>
     </inferredMetricsTieBreakers>
 </document>

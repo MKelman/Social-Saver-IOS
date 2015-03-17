@@ -31,6 +31,9 @@
 		A23CCB771AB79D8C0001A9A4 /* officialSSlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A23CCB761AB79D8C0001A9A4 /* officialSSlogo.png */; };
 		A23CCB791AB7A17C0001A9A4 /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = A23CCB781AB7A17C0001A9A4 /* ic_launcher.png */; };
 		A23CCB7C1AB897720001A9A4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB7B1AB897720001A9A4 /* MainViewController.m */; };
+		A23CCB811AB8AA4F0001A9A4 /* Deals.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB801AB8AA4F0001A9A4 /* Deals.m */; };
+		A23CCB841AB8ABC40001A9A4 /* Friends.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB831AB8ABC40001A9A4 /* Friends.m */; };
+		A23CCB871AB8AF0E0001A9A4 /* Logout.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB861AB8AF0E0001A9A4 /* Logout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +81,12 @@
 		A23CCB781AB7A17C0001A9A4 /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		A23CCB7A1AB897720001A9A4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		A23CCB7B1AB897720001A9A4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		A23CCB7F1AB8AA4F0001A9A4 /* Deals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Deals.h; path = ../Deals.h; sourceTree = "<group>"; };
+		A23CCB801AB8AA4F0001A9A4 /* Deals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Deals.m; path = ../Deals.m; sourceTree = "<group>"; };
+		A23CCB821AB8ABC40001A9A4 /* Friends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Friends.h; path = ../Friends.h; sourceTree = "<group>"; };
+		A23CCB831AB8ABC40001A9A4 /* Friends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Friends.m; path = ../Friends.m; sourceTree = "<group>"; };
+		A23CCB851AB8AF0E0001A9A4 /* Logout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Logout.h; path = ../Logout.h; sourceTree = "<group>"; };
+		A23CCB861AB8AF0E0001A9A4 /* Logout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Logout.m; path = ../Logout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +154,12 @@
 			children = (
 				A23CCB7A1AB897720001A9A4 /* MainViewController.h */,
 				A23CCB7B1AB897720001A9A4 /* MainViewController.m */,
+				A23CCB821AB8ABC40001A9A4 /* Friends.h */,
+				A23CCB831AB8ABC40001A9A4 /* Friends.m */,
+				A23CCB7F1AB8AA4F0001A9A4 /* Deals.h */,
+				A23CCB801AB8AA4F0001A9A4 /* Deals.m */,
+				A23CCB851AB8AF0E0001A9A4 /* Logout.h */,
+				A23CCB861AB8AF0E0001A9A4 /* Logout.m */,
 				A23CCB731AB79D580001A9A4 /* SidebarViewController.h */,
 				A23CCB741AB79D580001A9A4 /* SidebarViewController.m */,
 				A23CCB701AB79C940001A9A4 /* LoginPage.h */,
@@ -303,9 +318,12 @@
 			files = (
 				A23CCB371AB796320001A9A4 /* ViewController.m in Sources */,
 				A23CCB341AB796320001A9A4 /* AppDelegate.m in Sources */,
+				A23CCB871AB8AF0E0001A9A4 /* Logout.m in Sources */,
 				A23CCB311AB796320001A9A4 /* main.m in Sources */,
 				A23CCB751AB79D580001A9A4 /* SidebarViewController.m in Sources */,
+				A23CCB811AB8AA4F0001A9A4 /* Deals.m in Sources */,
 				A23CCB7C1AB897720001A9A4 /* MainViewController.m in Sources */,
+				A23CCB841AB8ABC40001A9A4 /* Friends.m in Sources */,
 				A23CCB6F1AB79C1E0001A9A4 /* SWRevealViewController.m in Sources */,
 				A23CCB721AB79C940001A9A4 /* LoginPage.m in Sources */,
 			);
