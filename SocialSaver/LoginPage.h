@@ -12,6 +12,7 @@
 
 - (IBAction)LoginB:(id)sender;
 - (IBAction)NewUserB:(id)sender;
+- (IBAction)ForgotPassword:(id)sender;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *forgotPassUI;

@@ -166,6 +166,30 @@ CGFloat animatedDistance;
     [self performSegueWithIdentifier:@"splashToNewUser" sender:self];
 }
 
+- (IBAction)ForgotPassword:(id)sender {
+    NSString *userEmail = [emailTextUI text];
+    if([userEmail length] > 0){ //its not empty
+        
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"username" equalTo:userEmail]; // find all the women
+        NSArray *userReal = [query findObjects];
+        if([userReal count] == 0){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"We dont have an email like that in our database. Please check the email address again" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+            [alert show];
+        }
+        else{ //there is such user so lets now reset their email
+            [PFUser requestPasswordResetForEmailInBackground:userEmail];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"Check your email to reset your password.\n(check your junk folder just in case)" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+            [alert show];
+        }
+    } //end if statement
+    else{ //its empty
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops :/" message:@"Please type in your email address used to initally sign up in the email field" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
 
 
 - (IBAction)resetPassword:(id)sender {

@@ -63,7 +63,6 @@
         <!--Main View Controller-->
         <scene sceneID="Zn7-wZ-jdi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WbY-QG-SQz" sceneMemberID="firstResponder"/>
                 <viewController title="Main View Controller" id="lCe-CH-Byu" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mgo-uV-wvf"/>
@@ -166,8 +165,9 @@
                         <outlet property="sideButton" destination="yci-mL-e78" id="q38-YO-JNC"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WbY-QG-SQz" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1722" y="435"/>
+            <point key="canvasLocation" x="1888" y="435"/>
         </scene>
         <!--Sidebar-->
         <scene sceneID="E3b-v0-uET">
@@ -371,6 +371,9 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ForgotPassword:" destination="0l0-CK-mcd" eventType="touchUpInside" id="vRP-AV-5jD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WpZ-kQ-vxX">
                                 <rect key="frame" x="94" y="473" width="124" height="30"/>
@@ -414,7 +417,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3QM-Uw-qny" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-861" y="974"/>
+            <point key="canvasLocation" x="-839" y="974"/>
         </scene>
         <!--User Info-->
         <scene sceneID="dUb-Xy-1oT">
@@ -693,10 +696,10 @@
             </objects>
             <point key="canvasLocation" x="1308" y="1801"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Friend List View Controller-->
         <scene sceneID="OE5-g2-OJC">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="gTn-Jm-TcW" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="gTn-Jm-TcW" customClass="FriendListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="93" sectionHeaderHeight="22" sectionFooterHeight="22" id="hk4-v3-CPe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -734,8 +737,8 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1.6/5.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObT-r7-cw6">
-                                            <rect key="frame" x="59" y="46" width="129" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQI-bd-ZGw">
+                                            <rect key="frame" x="102" y="65" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -747,13 +750,20 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQI-bd-ZGw">
-                                            <rect key="frame" x="102" y="65" width="42" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1.6/5.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObT-r7-cw6">
+                                            <rect key="frame" x="59" y="46" width="129" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="EmailLabel" destination="pSG-If-Hwn" id="5UU-cR-rFd"/>
+                                    <outlet property="ImageLabel" destination="RBK-ND-A1G" id="Ii8-oT-Rtu"/>
+                                    <outlet property="RatingLabel" destination="ObT-r7-cw6" id="2se-L7-YeM"/>
+                                    <outlet property="ReportCountLabel" destination="LQI-bd-ZGw" id="4uw-Bh-pyp"/>
+                                    <outlet property="UserNameLabel" destination="c9K-b6-FfP" id="sGs-wW-W7E"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -765,8 +775,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="0Am-bJ-LPs"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="infoTable" destination="hk4-v3-CPe" id="0ec-HX-oZf"/>
-                        <segue destination="SjJ-LV-p4x" kind="push" identifier="ShowDetails" id="eYw-Hp-glM"/>
+                        <outlet property="infoTable" destination="hk4-v3-CPe" id="gAF-1x-xMP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ct-Lz-lu0" userLabel="First Responder" sceneMemberID="firstResponder"/>

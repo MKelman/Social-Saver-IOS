@@ -36,6 +36,8 @@
 		A23CCB871AB8AF0E0001A9A4 /* Logout.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB861AB8AF0E0001A9A4 /* Logout.m */; };
 		A23CCB8A1AB8B2FF0001A9A4 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB891AB8B2FF0001A9A4 /* UserInfo.m */; };
 		A23CCB8C1AB8B8590001A9A4 /* black200.png in Resources */ = {isa = PBXBuildFile; fileRef = A23CCB8B1AB8B8590001A9A4 /* black200.png */; };
+		A23CCB8F1AB93D9C0001A9A4 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB8E1AB93D9C0001A9A4 /* TableCell.m */; };
+		A23CCB921AB940960001A9A4 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB911AB940960001A9A4 /* FriendListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,10 @@
 		A23CCB881AB8B2FF0001A9A4 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfo.h; path = ../UserInfo.h; sourceTree = "<group>"; };
 		A23CCB891AB8B2FF0001A9A4 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfo.m; path = ../UserInfo.m; sourceTree = "<group>"; };
 		A23CCB8B1AB8B8590001A9A4 /* black200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black200.png; sourceTree = "<group>"; };
+		A23CCB8D1AB93D9C0001A9A4 /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableCell.h; path = ../TableCell.h; sourceTree = "<group>"; };
+		A23CCB8E1AB93D9C0001A9A4 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableCell.m; path = ../TableCell.m; sourceTree = "<group>"; };
+		A23CCB901AB940960001A9A4 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendListViewController.h; path = ../FriendListViewController.h; sourceTree = "<group>"; };
+		A23CCB911AB940960001A9A4 /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendListViewController.m; path = ../FriendListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +167,10 @@
 				A23CCB7B1AB897720001A9A4 /* MainViewController.m */,
 				A23CCB821AB8ABC40001A9A4 /* Friends.h */,
 				A23CCB831AB8ABC40001A9A4 /* Friends.m */,
+				A23CCB901AB940960001A9A4 /* FriendListViewController.h */,
+				A23CCB911AB940960001A9A4 /* FriendListViewController.m */,
+				A23CCB8D1AB93D9C0001A9A4 /* TableCell.h */,
+				A23CCB8E1AB93D9C0001A9A4 /* TableCell.m */,
 				A23CCB7F1AB8AA4F0001A9A4 /* Deals.h */,
 				A23CCB801AB8AA4F0001A9A4 /* Deals.m */,
 				A23CCB851AB8AF0E0001A9A4 /* Logout.h */,
@@ -327,10 +337,12 @@
 			files = (
 				A23CCB8A1AB8B2FF0001A9A4 /* UserInfo.m in Sources */,
 				A23CCB371AB796320001A9A4 /* ViewController.m in Sources */,
+				A23CCB921AB940960001A9A4 /* FriendListViewController.m in Sources */,
 				A23CCB341AB796320001A9A4 /* AppDelegate.m in Sources */,
 				A23CCB871AB8AF0E0001A9A4 /* Logout.m in Sources */,
 				A23CCB311AB796320001A9A4 /* main.m in Sources */,
 				A23CCB751AB79D580001A9A4 /* SidebarViewController.m in Sources */,
+				A23CCB8F1AB93D9C0001A9A4 /* TableCell.m in Sources */,
 				A23CCB811AB8AA4F0001A9A4 /* Deals.m in Sources */,
 				A23CCB7C1AB897720001A9A4 /* MainViewController.m in Sources */,
 				A23CCB841AB8ABC40001A9A4 /* Friends.m in Sources */,

@@ -62,8 +62,6 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *name = [[alertView textFieldAtIndex:0].text lowercaseString];
     NSString *email = [[alertView textFieldAtIndex:1].text lowercaseString];
-    //NSLog(@"1 %@", name);
-    //NSLog(@"2 %@", email);
     if (name.length <= 0 || email.length <= 0) {
         UIAlertView *alert1 = [[UIAlertView alloc]initWithTitle:@"Sorry, not all the fields have been filled in." message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
         [alert1 show];
