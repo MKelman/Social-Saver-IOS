@@ -8,12 +8,12 @@
 #import "MainViewController.h"
 #import "SWRevealViewController.h"
 #import <Parse/Parse.h>
+
 #define kOFFSET_FOR_KEYBOARD 200.0
 
 @interface MainViewController (){
     BOOL keyboardShown;
     NSInteger keyboardHeight;
-    
 }
 
 @end
@@ -21,12 +21,15 @@
 @implementation MainViewController
 @synthesize dealType,itemName,maxPrice,saleEnd,saleEndLabel,found,foundLabel,foundLocation;
 
+
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
 static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.8;
 static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
 static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 CGFloat animatedDistance;
+double lat,longa;
+CLLocationManager *locationManager;
 
 
 - (void)viewDidLoad
@@ -47,8 +50,22 @@ CGFloat animatedDistance;
     self.maxPrice.delegate = self;
     self.saleEnd.delegate = self;
     self.foundLocation.delegate = self;
-
-
+    
+    // locationManager update as location
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    [locationManager startUpdatingLocation];
+    [locationManager stopUpdatingLocation];
+    CLLocation *location = [locationManager location];
+    // Configure the new event with information from the location
+    
+    float longitude=location.coordinate.longitude;
+    float latitude=location.coordinate.latitude;
+    
+   // NSLog(@"dLongitude : %f", longitude);
+   // NSLog(@"dLatitude : %f", latitude);
 
 
 }
@@ -89,7 +106,48 @@ CGFloat animatedDistance;
             [alert show];
         } else {
             PFObject *foundDeal = [PFObject objectWithClassName:@"FoundDeals"];
-            //foundDeal[@"State"] = TOMIstate;
+            
+            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+            f.numberStyle = NSNumberFormatterDecimalStyle;
+            NSNumber *price = [f numberFromString:[maxPrice text]];
+
+            PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:locationManager.location.coordinate.latitude longitude:locationManager.location.coordinate.longitude];
+            
+            foundDeal[@"maxPrice"] = price;
+            foundDeal[@"userLocation"] = point;
+            foundDeal[@"userEmail"] = [[PFUser currentUser]objectForKey:@"username"];
+            foundDeal[@"item"] = [itemName text];
+            foundDeal[@"actualLocation"] = [foundLocation text];
+            
+            NSString *fchoice = [found titleForSegmentAtIndex : found.selectedSegmentIndex];
+            if ([fchoice isEqualToString:@"Online"]) {
+                 foundDeal[@"foundLocation"] = @"Online";
+            } else {
+                foundDeal[@"foundLocation"] = @"In-Store";
+            }
+    
+            NSString *dateString = [saleEnd text];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            // this is imporant - we set our input date format to match our input string
+            // if format doesn't match you'll get nil from your string, so be careful
+            [dateFormatter setDateFormat:@"MM-dd-yyyy"];
+            NSDate *dateFromString = [[NSDate alloc] init];
+            // voila!
+            dateFromString = [dateFormatter dateFromString:dateString];
+            
+            foundDeal[@"saleEndDate"] = dateFromString;
+            
+            
+            [foundDeal saveInBackground];
+            
+            UIAlertView *alert1 = [[UIAlertView alloc]initWithTitle:@"Awesome, found deal posted." message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+            [alert1 show];
+            [self performSelector:@selector(dismiss:) withObject:alert1 afterDelay:2.0];
+            
+            [itemName setText:@""];
+            [maxPrice setText:@""];
+            [foundLocation setText:@""];
+            [saleEnd setText:@""];
 
             
         }
@@ -99,12 +157,38 @@ CGFloat animatedDistance;
             [alert show];
         } else {
             PFObject *wantedDeal = [PFObject objectWithClassName:@"SeekingDeals"];
-            wantedDeal[@"maxPrice", (NSNumber*)[maxPrice text]];
-            //wantedDeal[@"userLocation", point];
-            wantedDeal[@"userEmail"] = [[PFUser currentUser]objectForKey:@"email"];
-            wantedDeal[@"item", [itemName text]];
-            [wantedDeal saveInBackground];
+            
+            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+            f.numberStyle = NSNumberFormatterDecimalStyle;
+            NSNumber *price = [f numberFromString:[maxPrice text]];
+            wantedDeal[@"maxPrice"] = price;
+            
+            locationManager = [[CLLocationManager alloc] init];
+            locationManager.delegate = self;
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+            locationManager.distanceFilter = kCLDistanceFilterNone;
+            [locationManager startUpdatingLocation];
+            CLLocation *location = [locationManager location];
+            // Configure the new event with information from the location
+            CLLocationCoordinate2D coordinate = [location coordinate];
 
+            NSString *latitude = [NSString stringWithFormat:@"%f", coordinate.latitude];
+            NSString *longitude = [NSString stringWithFormat:@"%f", coordinate.longitude];
+           // NSLog(@"dLatitude : %@", latitude);
+           // NSLog(@"dLongitude : %@",longitude);
+            
+            PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:locationManager.location.coordinate.latitude longitude:locationManager.location.coordinate.longitude];
+            wantedDeal[@"userLocation"] = point;
+                       
+            wantedDeal[@"userEmail"] = [[PFUser currentUser]objectForKey:@"username"];
+            wantedDeal[@"item"] = [itemName text];
+            [wantedDeal saveInBackground];
+            
+            UIAlertView *alert1 = [[UIAlertView alloc]initWithTitle:@"Awesome, wanted deal posted." message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+            [alert1 show];
+            [self performSelector:@selector(dismiss:) withObject:alert1 afterDelay:2.0];
+            [itemName setText:@""];
+            [maxPrice setText:@""];
             
         }
     }
@@ -186,8 +270,35 @@ CGFloat animatedDistance;
     [UIView commitAnimations];
 }
 
+-(void)dismiss:(UIAlertView*)alert{
+    [alert dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [errorAlert show];
+    NSLog(@"Error: %@",error.description);
+}
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    CLLocation *crnLoc = [locations lastObject];
+    lat = crnLoc.coordinate.latitude;
+    longa = crnLoc.coordinate.longitude;
+
+}
 
 
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    
+    [manager stopUpdatingLocation];
+    locationManager.delegate = nil;
+    locationManager = nil;
+    
+    CLLocation *currentLocation = newLocation;
+    ///NSLog(@"%@", [self deviceLocation]);
+    
+}
 
 @end
 

@@ -11,5 +11,6 @@
 @interface Friends : UIViewController <UITextViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
+- (IBAction)AddFriend:(id)sender;
 
 @end

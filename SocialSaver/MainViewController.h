@@ -6,8 +6,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface MainViewController : UIViewController <UITextViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface MainViewController : UIViewController <UITextViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate, CLLocationManagerDelegate> {
+    
+    CLLocationManager *locationManager;
+    UILabel *latitude;
+    UILabel *longitude;
+    UILabel *horizontalAccuracy;
+    UILabel *altitude;
+    UILabel *verticalAccuracy;
+    UILabel *distance;
+    UIButton *resetButton;
+    CLLocation *startLocation;
+    
+}
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sideButton;
 
@@ -22,7 +35,6 @@
 - (IBAction)submitButton:(id)sender;
 - (IBAction)DealTypeAction:(id)sender;
 
-
-
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
