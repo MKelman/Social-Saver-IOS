@@ -29,7 +29,7 @@ NSInteger totalObject;
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
+
     activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
     NSInteger sizeheight = self.view.frame.size.height / 2.0;
@@ -48,58 +48,135 @@ NSInteger totalObject;
     [self performSelector:@selector(retrieveFromParse)];
     self.infoTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; //removes unsued lines from table view
     
-    
-    
 }
 
 
 -(void)retrieveFromParse{
+    
+    PFQuery *astutor = [PFQuery queryWithClassName:@"Friends"];
+    PFQuery *asstudent = [PFQuery queryWithClassName:@"Friends"];
+    NSString *useremail = [[PFUser currentUser] objectForKey:@"username"];
+    
+    [astutor whereKey:@"friendOne" equalTo:useremail ];
+    [asstudent whereKey:@"friendTwo" equalTo:useremail];
+    // [astutor orderByDescending:@"updatedAt"];
+    
+    
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[asstudent,astutor]];
+    [query orderByDescending:@"updatedAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(objects.count == 0){
+            UILabel *label = [[UILabel alloc] init];
+            CGRect frame = CGRectMake(0.0, 200.0, 320.0, 80.0); //x,y,width,hight
+            label.frame = frame;
+            label.numberOfLines = 5;
+            label.text = @"You dont have any Open Requests yet.";
+            [self.infoTable addSubview:label];
+            [activityIndicator stopAnimating];
+        } else {
+            
+            uname = [[NSArray alloc]initWithArray:objects];
+            uemail = [[NSArray alloc]initWithArray:objects];
+            ureport = [[NSArray alloc]initWithArray:objects];
+            urating = [[NSArray alloc]initWithArray:objects];
+            ufriendphoto = [[NSArray alloc]initWithArray:objects];
+            
+        }
+        [infoTable reloadData];
+    }];
+    
+    
+    
+    
+    
+    
+    
+    /*
+    
     PFQuery *asFriendOne = [PFQuery queryWithClassName:@"Friends"];
     PFQuery *asFriendTwo = [PFQuery queryWithClassName:@"Friends"];
     NSString *user = [[PFUser currentUser]objectForKey:@"username"];
     [asFriendOne whereKey:@"friendOne" equalTo: user];
     [asFriendTwo whereKey:@"friendTwo" equalTo: user];
     totalObject = 0;
-   
-    [asFriendOne findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        totalObject += objects.count;
-        
-        if (!error) {
-            uname = [[NSArray alloc]initWithArray:objects];
-            uemail = [[NSArray alloc]initWithArray:objects];
-            ureport = [[NSArray alloc]initWithArray:objects];
-            urating = [[NSArray alloc]initWithArray:objects];
-            ufriendphoto = [[NSArray alloc]initWithArray:objects];
-        }
-        
-        [infoTable reloadData];
-    }];
+    NSArray* friendOne = [asFriendOne findObjects];
+    NSArray* friendTwo = [asFriendTwo findObjects];
     
-    [asFriendTwo findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        totalObject += objects.count;
-        
-        if (!error) {
-            uname = [[NSArray alloc]initWithArray:objects];
-            uemail = [[NSArray alloc]initWithArray:objects];
-            ureport = [[NSArray alloc]initWithArray:objects];
-            urating = [[NSArray alloc]initWithArray:objects];
-            ufriendphoto = [[NSArray alloc]initWithArray:objects];
-        }
-
-        [infoTable reloadData];
-    }];
-    
-    if(totalObject == 0){
+    if(friendOne.count + friendTwo.count == 0){
         UILabel *label = [[UILabel alloc] init];
         CGRect frame = CGRectMake(0.0, 200.0, 320.0, 80.0); //x,y,width,hight
         label.frame = frame;
         label.numberOfLines = 5;
-        label.text = @"Sorry, nobody has placed a listing yet for this type of class. Please check back at a later time";
+        label.text = @"You do not have any current friends. Go back to the last page and add a friend!";
         [self.infoTable addSubview:label];
         [activityIndicator stopAnimating]; // end spinning wheel!
         
+    } else {
+        //NSArray *friendTotal;
+        for (int i = 0; i < friendOne.count; i++) {
+            NSString *asFriendOne = [[friendOne objectAtIndex:i] objectForKey:@"friendOne"];
+            NSString *asFriendTwo = [[friendOne objectAtIndex:i] objectForKey:@"friendTwo"];
+            NSString *userInfo = [[PFUser currentUser]objectForKey:@"username"];
+            
+            if([asFriendOne isEqualToString:userInfo]) {
+                PFQuery *query = [PFUser query];
+                [query whereKey:@"username" equalTo:asFriendTwo]; // find all the women
+                NSArray *user = [query findObjects];
+                
+                uname = [[NSArray alloc]initWithArray:user];
+                uemail = [[NSArray alloc]initWithArray:user];
+                ureport = [[NSArray alloc]initWithArray:user];
+                urating = [[NSArray alloc]initWithArray:user];
+                ufriendphoto = [[NSArray alloc]initWithArray:user];
+            } else {
+                PFQuery *query = [PFUser query];
+                [query whereKey:@"username" equalTo:asFriendOne]; // find all the women
+                NSArray *user = [query findObjects];
+                
+                uname = [[NSArray alloc]initWithArray:user];
+                uemail = [[NSArray alloc]initWithArray:user];
+                ureport = [[NSArray alloc]initWithArray:user];
+                urating = [[NSArray alloc]initWithArray:user];
+                ufriendphoto = [[NSArray alloc]initWithArray:user];
+            }
+            
+            [infoTable reloadData];
+        }
+        
+        for (int i = 0; i < friendTwo.count; i++) {
+            NSString *asFriendOne = [[friendTwo objectAtIndex:i] objectForKey:@"friendOne"];
+            NSString *asFriendTwo = [[friendTwo objectAtIndex:i] objectForKey:@"friendTwo"];
+            NSString *userInfo = [[PFUser currentUser]objectForKey:@"username"];
+            
+            if([asFriendOne isEqualToString:userInfo]) {
+                PFQuery *query = [PFUser query];
+                [query whereKey:@"username" equalTo:asFriendTwo]; // find all the women
+                NSArray *user = [query findObjects];
+                
+                uname = [[NSArray alloc]initWithArray:user];
+                uemail = [[NSArray alloc]initWithArray:user];
+                ureport = [[NSArray alloc]initWithArray:user];
+                urating = [[NSArray alloc]initWithArray:user];
+                ufriendphoto = [[NSArray alloc]initWithArray:user];
+            } else {
+                PFQuery *query = [PFUser query];
+                [query whereKey:@"username" equalTo:asFriendOne]; // find all the women
+                NSArray *user = [query findObjects];
+                
+                uname = [[NSArray alloc]initWithArray:user];
+                uemail = [[NSArray alloc]initWithArray:user];
+                ureport = [[NSArray alloc]initWithArray:user];
+                urating = [[NSArray alloc]initWithArray:user];
+                ufriendphoto = [[NSArray alloc]initWithArray:user];
+            }
+            
+           // [infoTable reloadData];
+        }
+         [infoTable reloadData];
     }
-    
+     */
+
+
     
 }
 
@@ -121,31 +198,69 @@ NSInteger totalObject;
     
     TableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    
-    
     PFObject *nameObject = [uname objectAtIndex:indexPath.row];
-    PFObject *emailObject = [uemail objectAtIndex:indexPath.row];
-    PFObject *ratingObject = [urating objectAtIndex:indexPath.row];
-    PFObject *reportObject = [ureport objectAtIndex:indexPath.row];
+    
+    //PFObject *emailObject = [uemail objectAtIndex:indexPath.row];
+    //PFObject *ratingObject = [urating objectAtIndex:indexPath.row];
+    //PFObject *reportObject = [ureport objectAtIndex:indexPath.row];
     PFObject *friendPhotoObject = [ufriendphoto objectAtIndex:indexPath.row];
     
-    cell.UserNameLabel.text = [nameObject objectForKey:@"name"];
-    cell.EmailLabel.text = [emailObject objectForKey:@"username"];
-    cell.RatingLabel.text = [ratingObject objectForKey:@"Rating"];
-    cell.ReportCountLabel.text = [reportObject objectForKey:@"reportCount"];
-    
-    PFFile *file = [friendPhotoObject objectForKey:@"userImage"];
-    NSData *data = [file getData];
-    UIImage *theImage = [UIImage imageWithData:data];
-    cell.ImageLabel.image = theImage;
-    
-    
-    PFObject *tempObject = [uname objectAtIndex:indexPath.row];
-    
-    name = [tempObject objectForKey:@"name"];
-    email = [tempObject objectForKey:@"username"];
-    rating = [tempObject objectForKey:@"Rating"];
-    Report = [tempObject objectForKey:@"reportCount"];
+    NSString *asFriendOne = [nameObject objectForKey:@"friendOne"];
+    NSString *asFriendTwo = [nameObject objectForKey:@"friendTwo"];
+    NSString *userInfo = [[PFUser currentUser]objectForKey:@"username"];
+
+    if ([asFriendOne isEqualToString:userInfo]) {
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"username" equalTo:asFriendTwo]; // find all the women
+        NSArray *user = [query findObjects];
+        
+        cell.UserNameLabel.text = [[user objectAtIndex:0] objectForKey:@"name"];
+        cell.EmailLabel.text = [[user objectAtIndex:0] objectForKey:@"username"];
+        NSString *rated = [[user objectAtIndex:0] objectForKey:@"Rating"];
+        NSLog(@"%@ / 5.0", rated);
+        NSString *full =  [NSString stringWithFormat:@"%@ / 5.0", rated];
+        cell.RatingLabel.text = full;
+        cell.ReportCountLabel.text = [[user objectAtIndex:0] objectForKey:@"reportCount"];
+        
+        PFFile *file = [[user objectAtIndex:0] objectForKey:@"userImage"];
+        NSData *data = [file getData];
+        UIImage *theImage = [UIImage imageWithData:data];
+        cell.ImageLabel.image = theImage;
+        
+        
+        PFObject *tempObject = [uname objectAtIndex:indexPath.row];
+        
+        name = [tempObject objectForKey:@"name"];
+        email = [tempObject objectForKey:@"username"];
+        rating = [tempObject objectForKey:@"Rating"];
+        Report = [tempObject objectForKey:@"reportCount"];
+
+    } else {
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"username" equalTo:asFriendTwo]; // find all the women
+        NSArray *user = [query findObjects];
+        
+        cell.UserNameLabel.text = [[user objectAtIndex:0] objectForKey:@"name"];
+        cell.EmailLabel.text = [[user objectAtIndex:0] objectForKey:@"username"];
+        NSString *rated = [[user objectAtIndex:0] objectForKey:@"Rating"];
+        NSLog(@"%@ / 5.0", rated);
+        NSString *full =  [NSString stringWithFormat:@"%@ / 5.0", rated];
+        cell.RatingLabel.text = full;
+        cell.ReportCountLabel.text = [[user objectAtIndex:0] objectForKey:@"reportCount"];
+        
+        PFFile *file = [[user objectAtIndex:0] objectForKey:@"userImage"];
+        NSData *data = [file getData];
+        UIImage *theImage = [UIImage imageWithData:data];
+        cell.ImageLabel.image = theImage;
+        
+        PFObject *tempObject = [uname objectAtIndex:indexPath.row];
+        
+        name = [tempObject objectForKey:@"name"];
+        email = [tempObject objectForKey:@"username"];
+        rating = [tempObject objectForKey:@"Rating"];
+        Report = [tempObject objectForKey:@"reportCount"];
+        
+    }
 
     
     [activityIndicator stopAnimating]; // end spinning wheel!
