@@ -133,7 +133,10 @@ CGFloat animatedDistance;
     
 }
 
-
+/*
+ * Login button to go to screen
+ *
+ */
 - (IBAction)LoginB:(id)sender {
     //check to see if login credentials are valid
     
@@ -149,8 +152,14 @@ CGFloat animatedDistance;
             [activityUI stopAnimating];
             if (user) {
                 //is will automatically push to the next
+                /*
+                 
+                 COULD WORK ON MATCHING A USERS FOUND DEAL TO WANTED DEALS AND DISPLAY TO USER!
+                 */
+                
+                
                 [self performSegueWithIdentifier:@"splashToMain2" sender:self];
-                // [self performSegueWithIdentifier:@"sw_rear" sender:self]; //this could actually mess it up?
+                
             } else {
                 NSLog(@"%@",error);
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failed." message:@"Invalid Username and/or Password." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
@@ -166,6 +175,10 @@ CGFloat animatedDistance;
     [self performSegueWithIdentifier:@"splashToNewUser" sender:self];
 }
 
+/*
+ * forgot password button to send email to users email to reset password
+ *
+ */
 - (IBAction)ForgotPassword:(id)sender {
     NSString *userEmail = [emailTextUI text];
     if([userEmail length] > 0){ //its not empty

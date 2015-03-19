@@ -38,6 +38,11 @@
 		A23CCB8C1AB8B8590001A9A4 /* black200.png in Resources */ = {isa = PBXBuildFile; fileRef = A23CCB8B1AB8B8590001A9A4 /* black200.png */; };
 		A23CCB8F1AB93D9C0001A9A4 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB8E1AB93D9C0001A9A4 /* TableCell.m */; };
 		A23CCB921AB940960001A9A4 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB911AB940960001A9A4 /* FriendListViewController.m */; };
+		A23CCB951ABA53500001A9A4 /* FriendDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB941ABA53500001A9A4 /* FriendDetail.m */; };
+		A23CCB981ABA5DAC0001A9A4 /* CurrentDeals.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB971ABA5DAC0001A9A4 /* CurrentDeals.m */; };
+		A23CCB9B1ABA5DBB0001A9A4 /* WantedDeals.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB9A1ABA5DBB0001A9A4 /* WantedDeals.m */; };
+		A23CCB9E1ABA61700001A9A4 /* TableCellCD.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB9D1ABA61700001A9A4 /* TableCellCD.m */; };
+		A23CCBA11ABA61800001A9A4 /* TableCellWD.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCBA01ABA61800001A9A4 /* TableCellWD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +103,16 @@
 		A23CCB8E1AB93D9C0001A9A4 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableCell.m; path = ../TableCell.m; sourceTree = "<group>"; };
 		A23CCB901AB940960001A9A4 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendListViewController.h; path = ../FriendListViewController.h; sourceTree = "<group>"; };
 		A23CCB911AB940960001A9A4 /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendListViewController.m; path = ../FriendListViewController.m; sourceTree = "<group>"; };
+		A23CCB931ABA53500001A9A4 /* FriendDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendDetail.h; path = ../FriendDetail.h; sourceTree = "<group>"; };
+		A23CCB941ABA53500001A9A4 /* FriendDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendDetail.m; path = ../FriendDetail.m; sourceTree = "<group>"; };
+		A23CCB961ABA5DAC0001A9A4 /* CurrentDeals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentDeals.h; path = ../CurrentDeals.h; sourceTree = "<group>"; };
+		A23CCB971ABA5DAC0001A9A4 /* CurrentDeals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentDeals.m; path = ../CurrentDeals.m; sourceTree = "<group>"; };
+		A23CCB991ABA5DBB0001A9A4 /* WantedDeals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WantedDeals.h; path = ../WantedDeals.h; sourceTree = "<group>"; };
+		A23CCB9A1ABA5DBB0001A9A4 /* WantedDeals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WantedDeals.m; path = ../WantedDeals.m; sourceTree = "<group>"; };
+		A23CCB9C1ABA61700001A9A4 /* TableCellCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableCellCD.h; path = ../TableCellCD.h; sourceTree = "<group>"; };
+		A23CCB9D1ABA61700001A9A4 /* TableCellCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableCellCD.m; path = ../TableCellCD.m; sourceTree = "<group>"; };
+		A23CCB9F1ABA61800001A9A4 /* TableCellWD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableCellWD.h; path = ../TableCellWD.h; sourceTree = "<group>"; };
+		A23CCBA01ABA61800001A9A4 /* TableCellWD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableCellWD.m; path = ../TableCellWD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,10 +184,20 @@
 				A23CCB831AB8ABC40001A9A4 /* Friends.m */,
 				A23CCB901AB940960001A9A4 /* FriendListViewController.h */,
 				A23CCB911AB940960001A9A4 /* FriendListViewController.m */,
+				A23CCB931ABA53500001A9A4 /* FriendDetail.h */,
+				A23CCB941ABA53500001A9A4 /* FriendDetail.m */,
 				A23CCB8D1AB93D9C0001A9A4 /* TableCell.h */,
 				A23CCB8E1AB93D9C0001A9A4 /* TableCell.m */,
 				A23CCB7F1AB8AA4F0001A9A4 /* Deals.h */,
 				A23CCB801AB8AA4F0001A9A4 /* Deals.m */,
+				A23CCB961ABA5DAC0001A9A4 /* CurrentDeals.h */,
+				A23CCB971ABA5DAC0001A9A4 /* CurrentDeals.m */,
+				A23CCB9C1ABA61700001A9A4 /* TableCellCD.h */,
+				A23CCB9D1ABA61700001A9A4 /* TableCellCD.m */,
+				A23CCB991ABA5DBB0001A9A4 /* WantedDeals.h */,
+				A23CCB9A1ABA5DBB0001A9A4 /* WantedDeals.m */,
+				A23CCB9F1ABA61800001A9A4 /* TableCellWD.h */,
+				A23CCBA01ABA61800001A9A4 /* TableCellWD.m */,
 				A23CCB851AB8AF0E0001A9A4 /* Logout.h */,
 				A23CCB861AB8AF0E0001A9A4 /* Logout.m */,
 				A23CCB881AB8B2FF0001A9A4 /* UserInfo.h */,
@@ -338,15 +363,20 @@
 				A23CCB8A1AB8B2FF0001A9A4 /* UserInfo.m in Sources */,
 				A23CCB371AB796320001A9A4 /* ViewController.m in Sources */,
 				A23CCB921AB940960001A9A4 /* FriendListViewController.m in Sources */,
+				A23CCB951ABA53500001A9A4 /* FriendDetail.m in Sources */,
 				A23CCB341AB796320001A9A4 /* AppDelegate.m in Sources */,
 				A23CCB871AB8AF0E0001A9A4 /* Logout.m in Sources */,
 				A23CCB311AB796320001A9A4 /* main.m in Sources */,
 				A23CCB751AB79D580001A9A4 /* SidebarViewController.m in Sources */,
 				A23CCB8F1AB93D9C0001A9A4 /* TableCell.m in Sources */,
 				A23CCB811AB8AA4F0001A9A4 /* Deals.m in Sources */,
+				A23CCBA11ABA61800001A9A4 /* TableCellWD.m in Sources */,
+				A23CCB981ABA5DAC0001A9A4 /* CurrentDeals.m in Sources */,
 				A23CCB7C1AB897720001A9A4 /* MainViewController.m in Sources */,
 				A23CCB841AB8ABC40001A9A4 /* Friends.m in Sources */,
+				A23CCB9B1ABA5DBB0001A9A4 /* WantedDeals.m in Sources */,
 				A23CCB6F1AB79C1E0001A9A4 /* SWRevealViewController.m in Sources */,
+				A23CCB9E1ABA61700001A9A4 /* TableCellCD.m in Sources */,
 				A23CCB721AB79C940001A9A4 /* LoginPage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

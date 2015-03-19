@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "TableCell.h"
-//#import "FriendListDetail.h"
+#import "FriendDetail.h"
 
 @interface FriendListViewController : UITableViewController <UITableViewDelegate> {
     NSArray *uname,*uemail,*urating,*ureport,*ufriendphoto;

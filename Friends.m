@@ -63,7 +63,7 @@
     NSString *name = [[alertView textFieldAtIndex:0].text lowercaseString];
     NSString *email = [[alertView textFieldAtIndex:1].text lowercaseString];
     if (name.length <= 0 || email.length <= 0) {
-        UIAlertView *alert1 = [[UIAlertView alloc]initWithTitle:@"Sorry, not all the fields have been filled in." message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+        UIAlertView *alert1 = [[UIAlertView alloc]initWithTitle:@"Adding friend canceled." message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
         [alert1 show];
         [self performSelector:@selector(dismiss:) withObject:alert1 afterDelay:2.5];
     } else {
