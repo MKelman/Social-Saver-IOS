@@ -43,6 +43,7 @@
 		A23CCB9B1ABA5DBB0001A9A4 /* WantedDeals.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB9A1ABA5DBB0001A9A4 /* WantedDeals.m */; };
 		A23CCB9E1ABA61700001A9A4 /* TableCellCD.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCB9D1ABA61700001A9A4 /* TableCellCD.m */; };
 		A23CCBA11ABA61800001A9A4 /* TableCellWD.m in Sources */ = {isa = PBXBuildFile; fileRef = A23CCBA01ABA61800001A9A4 /* TableCellWD.m */; };
+		A2DA06271ABF349A007409BD /* ViewReport.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DA06261ABF349A007409BD /* ViewReport.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,8 @@
 		A23CCB9D1ABA61700001A9A4 /* TableCellCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableCellCD.m; path = ../TableCellCD.m; sourceTree = "<group>"; };
 		A23CCB9F1ABA61800001A9A4 /* TableCellWD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableCellWD.h; path = ../TableCellWD.h; sourceTree = "<group>"; };
 		A23CCBA01ABA61800001A9A4 /* TableCellWD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableCellWD.m; path = ../TableCellWD.m; sourceTree = "<group>"; };
+		A2DA06251ABF349A007409BD /* ViewReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewReport.h; path = ../ViewReport.h; sourceTree = "<group>"; };
+		A2DA06261ABF349A007409BD /* ViewReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewReport.m; path = ../ViewReport.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +207,8 @@
 				A23CCB891AB8B2FF0001A9A4 /* UserInfo.m */,
 				A23CCB701AB79C940001A9A4 /* LoginPage.h */,
 				A23CCB711AB79C940001A9A4 /* LoginPage.m */,
+				A2DA06251ABF349A007409BD /* ViewReport.h */,
+				A2DA06261ABF349A007409BD /* ViewReport.m */,
 				A23CCB731AB79D580001A9A4 /* SidebarViewController.h */,
 				A23CCB741AB79D580001A9A4 /* SidebarViewController.m */,
 				A23CCB321AB796320001A9A4 /* AppDelegate.h */,
@@ -370,6 +375,7 @@
 				A23CCB751AB79D580001A9A4 /* SidebarViewController.m in Sources */,
 				A23CCB8F1AB93D9C0001A9A4 /* TableCell.m in Sources */,
 				A23CCB811AB8AA4F0001A9A4 /* Deals.m in Sources */,
+				A2DA06271ABF349A007409BD /* ViewReport.m in Sources */,
 				A23CCBA11ABA61800001A9A4 /* TableCellWD.m in Sources */,
 				A23CCB981ABA5DAC0001A9A4 /* CurrentDeals.m in Sources */,
 				A23CCB7C1AB897720001A9A4 /* MainViewController.m in Sources */,

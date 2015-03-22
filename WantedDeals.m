@@ -45,8 +45,8 @@ NSInteger totalObject;
 -(void)retrieveFromParse{
     
     PFQuery *deals = [PFQuery queryWithClassName:@"SeekingDeals"];
-    //NSString *useremail = [[PFUser currentUser] objectForKey:@"username"];
-    
+    NSString *useremail = [[PFUser currentUser] objectForKey:@"username"];
+    [deals whereKey:@"userEmail" equalTo:useremail ];
     [deals findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             uitem = [[NSArray alloc]initWithArray:objects];
@@ -57,7 +57,7 @@ NSInteger totalObject;
             CGRect frame = CGRectMake(0.0, 200.0, 320.0, 80.0); //x,y,width,hight
             label.frame = frame;
             label.numberOfLines = 5;
-            label.text = @"Sorry, nobody has placed a listing yet for this type of class. Please check back at a later time";
+            label.text = @"You current dont have any wanted deals.";
             [self.infoTablewd addSubview:label];
             [activityIndicator stopAnimating]; // end spinning wheel!
             

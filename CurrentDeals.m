@@ -45,7 +45,6 @@ NSInteger totalObject;
 -(void)retrieveFromParse{
     
     PFQuery *deals = [PFQuery queryWithClassName:@"FoundDeals"];
-    //NSString *useremail = [[PFUser currentUser] objectForKey:@"username"];
     
     [deals findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {

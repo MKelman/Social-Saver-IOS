@@ -38,13 +38,6 @@ NSInteger totalObject;
     
     [activityIndicator startAnimating];
     
-    /*
-    state = stateOfCollege;
-    university = collegeName;
-    typeOfClass = classType;
-    sortingBy = sortBy;
-    tutorsemail = Temail;
-    */
     [self performSelector:@selector(retrieveFromParse)];
     self.infoTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; //removes unsued lines from table view
     
@@ -70,7 +63,7 @@ NSInteger totalObject;
             CGRect frame = CGRectMake(0.0, 200.0, 320.0, 80.0); //x,y,width,hight
             label.frame = frame;
             label.numberOfLines = 5;
-            label.text = @"You dont have any Open Requests yet.";
+            label.text = @"You dont have any friends yet.";
             [self.infoTable addSubview:label];
             [activityIndicator stopAnimating];
         } else {
@@ -228,9 +221,6 @@ NSInteger totalObject;
         D1.arating = rating;
         D1.areport = Report;
         D1.aobjectid = objectid;
-        //D1.auserimage = friendphoto;
-        
-
         
     }
     

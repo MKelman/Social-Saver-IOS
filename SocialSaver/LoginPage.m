@@ -24,11 +24,14 @@ CGFloat animatedDistance;
 
 @synthesize activityUI,forgotPassUI,LoginPageUI,userUI,emailTextUI,passwordTextUI,socialPicUI;
 
+bool isFound = false;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -44,6 +47,7 @@ CGFloat animatedDistance;
     //navController.navigationBar = yes;
     self.emailTextUI.delegate = self;
     self.passwordTextUI.delegate = self;
+    isFound = false;
     // Do any additional setup after loading the view.
     [self checkStatus];
 }
@@ -152,13 +156,75 @@ CGFloat animatedDistance;
             [activityUI stopAnimating];
             if (user) {
                 //is will automatically push to the next
+                
                 /*
-                 
                  COULD WORK ON MATCHING A USERS FOUND DEAL TO WANTED DEALS AND DISPLAY TO USER!
                  */
                 
+                PFQuery *deals = [PFQuery queryWithClassName:@"SeekingDeals"];
+                PFQuery *Fdeals = [PFQuery queryWithClassName:@"FoundDeals"];
                 
-                [self performSegueWithIdentifier:@"splashToMain2" sender:self];
+                NSString *useremail = [[PFUser currentUser] objectForKey:@"username"];
+                [deals whereKey:@"userEmail" equalTo:useremail ];
+                
+                NSArray *objects = [deals findObjects];
+                
+                //[deals findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+           
+                   // if (!error) {
+                        for (PFObject *object in objects) {
+                            NSString *itemName = [object objectForKey:@"item"];
+                            NSNumber *price = [object objectForKey:@"maxPrice"];
+                            
+                            
+                            //[Fdeals findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                                NSArray * objects2 = [Fdeals findObjects];
+                                //if (!error) {
+                                    for (PFObject *object2 in objects2) {
+                                        NSString *item = [object2 objectForKey:@"item"];
+                                        NSNumber *priceFound = [object2 objectForKey:@"maxPrice"];
+                                        
+                                        if ([ [itemName lowercaseString] isEqualToString:[item lowercaseString]]){
+                                            
+                                            if ( [price doubleValue] >= [priceFound doubleValue] ) {
+                                                isFound = true;
+                                                bool isFriends = false;
+                                                /*
+                                                PFQuery *Friends = [PFQuery queryWithClassName:@"Friends"];
+                                                [Friends findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                                                
+                                                 if (!error) {
+                                                     for (PFObject *object3 in objects) {
+                                                         
+                                                     }
+                                                 }
+                                                
+                                                }];
+                                                */
+                                            
+                                            }
+                                        }
+
+                                    }
+                        }
+
+
+                if(isFound) {
+                    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"There are some new deals that match your wanted deals. View them now?"
+                                                                          message:nil
+                                                                         delegate:self
+                                                                cancelButtonTitle:@"No"
+                                                                otherButtonTitles: @"Yes",nil];
+                    [myAlertView show];
+
+                } else {
+                    [self performSegueWithIdentifier:@"splashToMain2" sender:self];
+                }
+                
+                /*
+                 * send to main screen
+                 */
+                //[self performSegueWithIdentifier:@"splashToMain2" sender:self];
                 
             } else {
                 NSLog(@"%@",error);
@@ -170,6 +236,35 @@ CGFloat animatedDistance;
     
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if([title isEqualToString:@"No"]) {
+        [self performSegueWithIdentifier:@"splashToMain2" sender:self];
+    }
+    else if([title isEqualToString:@"Yes"]) {
+        [self performSegueWithIdentifier:@"toViewList" sender:self];
+        
+        //segue to another place to show listings
+        /*
+        //delete listing and go back to my listings
+        PFObject *object = [PFObject objectWithoutDataWithClassName:@"Friends"objectId:aobjectid];
+        [object deleteEventually];
+        UIAlertView *alert1 = [[UIAlertView alloc]initWithTitle:@"Friend deleted" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+        [alert1 show];
+        [self performSelector:@selector(dismiss:) withObject:alert1 afterDelay:2.0];
+        
+        [self performSegueWithIdentifier:@"backToHome" sender:self];
+        //backToListings
+         */
+    }
+    
+}
+
+-(void)dismiss:(UIAlertView*)alert{
+    [alert dismissWithClickedButtonIndex:0 animated:YES];
+}
 
 - (IBAction)NewUserB:(id)sender {
     [self performSegueWithIdentifier:@"splashToNewUser" sender:self];
